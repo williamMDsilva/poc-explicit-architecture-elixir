@@ -24,17 +24,23 @@ see ./lib/app/notification/notification.md
 ## Local configs
 
 - Run infra:
-  ```bash
+  ```sh
    docker-compose up -d
   ```
 - Database migrations
-  ```bash
+  ```sh
    mix ecto.migrate
   ```
 
 ## Reference to build new modules
 
 <img src="https://butovo.zone/clean_and_hexagonal.png" />
+
+## Run runing tests
+
+```sh
+ mix test ./test/**/*.ex
+```
 
 ## ROADMAP
 
