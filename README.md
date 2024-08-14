@@ -17,18 +17,27 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 
 <img src="./Flowchart.png" />
 
-## Resorces
+## Resorces API
 
 see ./lib/app/notification/notification.md
 
 ## Local configs
 
-- 1. Database:
+- Run infra:
   ```bash
    docker-compose up -d
   ```
-- 2. Database
+- Database migrations
+  ```bash
+   mix ecto.migrate
+  ```
 
 ## Reference to build new modules
 
 <img src="https://butovo.zone/clean_and_hexagonal.png" />
+
+## ROADMAP
+
+[X] POST /notification/subscribe
+[ ] POST /notification/send/all
+[ ] POST /notification/send/:push_token
