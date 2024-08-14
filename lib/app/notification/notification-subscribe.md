@@ -116,6 +116,4 @@ fetch("http://localhost:4000/api/notification/subscribe", {
 
 ### **Notes**
 
-(Optional) Any additional information that might be helpful for the user.
-
 ---
