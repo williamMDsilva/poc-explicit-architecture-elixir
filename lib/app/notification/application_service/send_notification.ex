@@ -20,12 +20,11 @@ defmodule App.Notification.ApplicationService.SendNotificationService do
   defp send_to_expo(_chunk), do: {:error, :internal_server_error}
 
   def send("all", body: body, title: title, access_token: access_token) do
-    message = Message.create(body: body, title: title)
-
     with {:ok, _authorized} <- AuthService.check(access_token),
+         {:ok, message} <- Message.create(body: body, title: title),
          {:ok, subscribers} <- SubscribeRepository.fetch_subscribers(),
          {:ok, messages_chunk} <- Message.create_chunk_message(message, subscribers),
-         {ok, response} <- send_to_expo(messages_chunk) do
+         {:ok, response} <- send_to_expo(messages_chunk) do
       {:ok, response}
     else
       {:error, error} -> {:error, error}
@@ -33,13 +32,17 @@ defmodule App.Notification.ApplicationService.SendNotificationService do
   end
 
   def send(push_token, body: body, title: title, access_token: access_token) do
-    message = Message.create(body: body, title: title) |> Message.update_to(to: push_token)
-
     with {:ok, _authorized} <- AuthService.check(access_token),
-         {ok, response} <- send_to_expo([message]) do
+         {:ok, message} <-
+           Message.create(body: body, title: title),
+         {:ok, message_with_destination} <- Message.update_to(message, to: push_token),
+         {:ok, response} <-
+           send_to_expo([message_with_destination]) do
       {:ok, response}
     else
       {:error, error} -> {:error, error}
     end
   end
+
+  def send(_push_token, _opts), do: {:error, :invalid_data}
 end

@@ -29,6 +29,11 @@ defmodule AppWeb.NotificationController do
         |> put_status(:ok)
         |> json(%{reponse: reponse})
 
+      {:error, :invalid_data} ->
+        conn
+        |> put_status(:bad_request)
+        |> json(%{error: "invalid_data", message: "Invalid body"})
+
       {:error, :unauthorized} ->
         conn
         |> put_status(:unauthorized)
@@ -39,6 +44,12 @@ defmodule AppWeb.NotificationController do
         |> put_status(:internal_server_error)
         |> json(%{error: "error_server", message: "Something went wrong!"})
     end
+  end
+
+  def send(conn, _) do
+    conn
+    |> put_status(:bad_request)
+    |> json(%{error: "invalid_data", message: "Invalid body"})
   end
 
   def subscribe(conn, %{"token" => token}) do

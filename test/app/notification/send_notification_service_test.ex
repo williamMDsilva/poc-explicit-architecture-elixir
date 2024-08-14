@@ -9,7 +9,28 @@ defmodule App.Notification.SendNotificationServiceTest do
   @access_token "01914e21-ee46-74a4-b43c-c92acbc108ef@01914e22-1cf7-771a-892c-36bb1b52617f"
 
   # TODO - Add seed to crate a list of subscribers
-  # TODO -
+
+  test "With right token and invalid data should return :error" do
+    data =
+      SendNotificationService.send(
+        "all",
+        body: 123,
+        title: 1235,
+        access_token: @access_token
+      )
+
+    assert data === {:error, :invalid_data}
+  end
+
+  test "With right token and invalid body, title should return :error" do
+    data =
+      SendNotificationService.send(
+        "all",
+        access_token: @access_token
+      )
+
+    assert data === {:error, :invalid_data}
+  end
 
   test "With wrong token should return unauthorized" do
     data =
