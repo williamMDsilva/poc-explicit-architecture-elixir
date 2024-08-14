@@ -46,15 +46,6 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
  mix test ./test/**/*.ex
 ```
 
-## ROADMAP
-
-[X] POST /notification/subscribe
-[ ] DELETE /notification/subscribe
-[X] POST /notification/send/all
-[X] POST /notification/send/:push_token
-[ ] gRPC impl
-[ ] Create flavors to dev and prod
-
 ## Run on docker-composer
 
 Build image
@@ -80,3 +71,12 @@ or
 ```sh
 docker-compose up -d
 ```
+
+## ROADMAP
+
+- [X] POST /notification/subscribe
+- [ ] DELETE /notification/subscribe
+- [X] POST /notification/send/all
+- [X] POST /notification/send/:push_token
+- [ ] gRPC impl
+- [ ] Create flavors to dev and prod
