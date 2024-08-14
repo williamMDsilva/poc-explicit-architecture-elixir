@@ -7,9 +7,7 @@ To start your Phoenix server:
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## archtectural concepts from Explicit Architecture
+## archtectural concepts based on Explicit Architecture
 
 <a href="https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/">
 
@@ -17,9 +15,11 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 
 <img src="./Flowchart.png" />
 
-## Resorces API
+## Resorces API - reference book
 
-see ./lib/app/notification/notification.md
+<a href="./lib/app/notification/notification-subscribe.md">POST /notification/subscribe</a>
+<a href="./lib/app/notification/notification-send.md">POST /notification/send/all</a>
+<a href="./lib/app/notification/notification-send.md">POST /notification/send/:push_token</a>
 
 ## Local configs
 
@@ -49,6 +49,34 @@ see ./lib/app/notification/notification.md
 ## ROADMAP
 
 [X] POST /notification/subscribe
+[ ] DELETE /notification/subscribe
 [X] POST /notification/send/all
 [X] POST /notification/send/:push_token
 [ ] gRPC impl
+[ ] Create flavors to dev and prod
+
+## Run on docker-composer
+
+Build image
+
+```sh
+docker build -t app/expo-project .
+```
+
+Run container
+
+```sh
+docker run -p 4000:4000 app/expo-project
+```
+
+Docker composer command
+
+```sh
+docker-compose up
+```
+
+or
+
+```sh
+docker-compose up -d
+```

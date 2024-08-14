@@ -24,10 +24,7 @@ config :app, AppWeb.Endpoint,
   code_reloader: true,
   debug_errors: true,
   secret_key_base: "iglhqk7ZAWolqYI9GCMWWGkctxwMi7ehKvRiK/K1Y4F4Jctql5QOIYh0LZzeWQEx",
-  watchers: [
-    esbuild: {Esbuild, :install_and_run, [:app, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:app, ~w(--watch)]}
-  ]
+  watchers: []
 
 # ## SSL Support
 #
