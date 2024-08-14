@@ -31,6 +31,10 @@ see ./lib/app/notification/notification.md
   ```sh
    mix ecto.migrate
   ```
+- Run server
+  ```sh
+  mix phx.server
+  ```
 
 ## Reference to build new modules
 
@@ -45,5 +49,6 @@ see ./lib/app/notification/notification.md
 ## ROADMAP
 
 [X] POST /notification/subscribe
-[ ] POST /notification/send/all
-[ ] POST /notification/send/:push_token
+[X] POST /notification/send/all
+[X] POST /notification/send/:push_token
+[ ] gRPC impl

@@ -9,6 +9,7 @@ defmodule AppWeb.Router do
     pipe_through :api
 
     post "/notification/subscribe", NotificationController, :subscribe
+    post "/notification/send/:push_token", NotificationController, :send
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

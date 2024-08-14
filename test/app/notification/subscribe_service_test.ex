@@ -1,4 +1,4 @@
-defmodule App.SubscribeServiceTest do
+defmodule App.Notification.SubscribeServiceTest do
   use AppWeb.ConnCase, async: true
   import Ecto.Query
 
